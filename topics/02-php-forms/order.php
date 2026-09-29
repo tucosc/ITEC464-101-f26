@@ -63,3 +63,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Order Form</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+    <h1>Simple Order Form</h1>
+    <form action="process-order.php" method="post">
+        <p>
+            <label>Customer Name</label>
+            <input type="text" name="name" value="<?php echo $name; ?>">
+            <span class="error"><?php echo $errors['name'] ?? ""; ?></span>
+        </p>
+        <p>
+            <label>Email</label>
+            <input type="email" name="email" value="<?php echo $email; ?>">
+            <span class="error"><?php echo $errors['email'] ?? ""; ?></span>
+        </p>
+        <p>
+            <label>Product</label>
+            <select name="product">
+                <option value="">--Select a product--</option>
+                <option <?php if($product == 'Laptop') echo "selected"; ?>>Laptop</option>
+                <option <?php if($product == 'Monitor') echo "selected"; ?>>Monitor</option>
+            </select>
+            <span class="error"><?php echo $errors['product'] ?? ""; ?></span>
+        </p>
+
+        <p>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </p>
+
+        <p>
+            <label>Shipping Method</label>
+            <input type="radio" id="standard" name="shipping" value="Standard" checked>
+            <label for="standard">Standard</label>
+
+            <input type="radio" id="express" name="shipping" value="Express">
+            <label for="express">Express</label>
+
+            <input type="radio" id="overnight" name="shipping" value="Overnight">
+            <label for="overnight">Overnight</label>
+        </p>
+
+        <p>
+            <label for="instructions">Instructions</label>
+            <textarea name="instructions" rows="3" cols="40"></textarea>
+        </p>
+
+        <button type="submit">Place Order</button>
+
+    </form>
+</body>
+
+</html>
