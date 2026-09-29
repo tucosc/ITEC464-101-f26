@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <h1>Simple Order Form</h1>
-    <form action="process-order.php" method="post">
+    <form action="order.php" method="post">
         <p>
             <label>Customer Name</label>
             <input type="text" name="name" value="<?php echo $name; ?>">
